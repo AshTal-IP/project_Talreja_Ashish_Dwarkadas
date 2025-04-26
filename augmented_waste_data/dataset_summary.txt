@@ -1,0 +1,13 @@
+📊 Final image count per class per split:
+
+[TRAIN]
+  recyclable       : 14638 images
+  non_recyclable   : 12933 images
+
+[VAL]
+  recyclable       : 4182 images
+  non_recyclable   : 3695 images
+
+[TEST]
+  recyclable       : 2092 images
+  non_recyclable   : 1848 images
