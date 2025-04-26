@@ -3,7 +3,16 @@
 > ⚠️ **Important Warning**: Make sure `Pillow` (PIL) and all required `torch` libraries are installed **before** running the project python files, otherwise the  script will not work properly.
 
 ---
+>
+# **Very Important Note for Prediction**
+the_predictor function, which would be imported from the predict.py file, will only accept list of images paths which means a list of strings. This is as was asked in the project instructions.
+example:
 
+```python
+the_predictor(["data/recyclable/Image_1.png", "data/non_recyclable/Image_2.png"])
+```
+
+---
 ## 1. Training Weights Saving
 - If you wish to run `train.py` again, note that the final weights will now be saved in the `_checkpoints` directory instead of the `checkpoints` directory.
 - This ensures the original `final_weights.pth` present in the `checkpoints` folder is **not overwritten**, as per the instructions.
