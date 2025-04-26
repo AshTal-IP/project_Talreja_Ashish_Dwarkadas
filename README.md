@@ -11,7 +11,8 @@
 ---
 
 ## 2. Downloading the Raw Dataset
-The raw dataset is named **"Recyclable and Household Waste Classification"** and can be downloaded from Kaggle using the following steps:
+The raw dataset is named **"Recyclable and Household Waste Classification"** ([Kaggle Dataset Link](https://www.kaggle.com/datasets/alistairking/recyclable-and-household-waste-classification))
+ and can be downloaded from Kaggle using the following steps:
 
 
 
