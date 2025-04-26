@@ -90,10 +90,12 @@ pip3 install torch torchvision torchaudio pillow
 
 ---
 
-## 5. Additional Required Library
-The **PIL (Python Imaging Library)** is needed for image handling.
+## 5. Additional Required Checks
+Please make sure you have 
+1. cuda compilers and runtime libraries installed on you local machine with cuda-12.1 or higher support
+2. It helps if cuDNN library is availabe (cudnn-8.2), it offers highly optimized implementations of deep learning operations
+3. I had run my training code on Nvidia A30 GPU, which allowed be to keep a big batch size
 
-(Note: `Pillow` is the modern replacement for PIL.)
 
 ---
 
