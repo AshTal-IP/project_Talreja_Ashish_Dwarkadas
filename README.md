@@ -1,4 +1,50 @@
-# Project Instructions
+# Waste Classification using Residual CNN
+
+## Project Description
+
+### Problem Formulation
+This project tackles the binary classification of waste materials into **recyclable** (class 1) and **non-recyclable** (class 0) categories using deep learning. Accurate automated waste sorting can significantly improve recycling efficiency and reduce environmental pollution.
+
+**Input**: RGB images of waste items (which would be resized to 128x128px by the model)  
+**Output**: Binary prediction (0 or 1) with confidence score
+
+### Dataset
+- **Source**: "augmented_waste_data" (which is attached in this repo), which is a augmented and preprocessed version of "Recyclable and Household Waste Classification" (find more info in later section)
+- **Class Distribution**:
+  - Train: 14,638 recyclable + 12,933 non-recyclable
+  - Val: 4,182 recyclable + 3,695 non-recyclable
+  - Test: 2,092 recyclable + 1,848 non-recyclable
+
+
+## Model Description
+
+### Architecture Choice
+**RecyclingResNet**: A custom Residual CNN with:
+- 3 residual blocks with skip connections
+- Batch normalization and dropout (p=0.7)
+- Adaptive average pooling
+- Sigmoid-activated single-neuron output
+
+**Key Features**:
+1. **Residual Blocks**: Prevent vanishing gradients in deep networks
+   ```python
+   class ResidualBlock(nn.Module):
+       def __init__(self, in_channels, out_channels, stride=1):
+           super().__init__()
+           self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, 
+                                 stride=stride, padding=1, bias=False)
+           self.bn1 = nn.BatchNorm2d(out_channels)
+           # ... (shortcut connection if stride/channels change)
+
+2. **Regularization**:
+
+     - L2 weight decay (λ=1e-3)
+
+     - Dropout before final layer
+
+3. **Dynamic Learning Rate**: ReduceLROnPlateau scheduler monitors validation accuracy
+
+# Project Pipeline Instructions
 
 > ⚠️ **Important Warning**: Make sure `Pillow` (PIL) and all required `torch` libraries are installed **before** running the project python files, otherwise the  script will not work properly.
 
@@ -104,7 +150,7 @@ pip3 install torch torchvision torchaudio pillow
 Please make sure you have 
 1. cuda compilers and runtime libraries installed on you local machine with cuda-12.1 or higher support
 2. It helps if cuDNN library is availabe (cudnn-8.2), it offers highly optimized implementations of deep learning operations
-3. I had run my training code on Nvidia A30 GPU (24 GB VRAM), which allowed be to keep a big batch size
+3. The model was trained on an Nvidia GPU
 
 
 ---
